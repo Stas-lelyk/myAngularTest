@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Using jQuery plugin in Angular directive</title>
+    <link rel="stylesheet" href="js/jquery/plugins/selectize/vendor/examples/css/normalize.css">
+    <link rel="stylesheet" href="js/jquery/plugins/selectize/vendor/examples/css/stylesheet.css">
+    <link rel="stylesheet" href="js/jquery/plugins/selectize/vendor/dist/css/selectize.default.css">
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Using jQuery plugin in Angular directive</h1>
+        <div class="demo" ng-app="authorPlugin">
+            <h2>jQuery plugin in Angular directive</h2>
+            <p>The options are created from json file via ajax.</p>
+            <div class="control-group">
+                <label>Tools:</label>
+                <div class="author-wrapper">
+                      <selectize options=""></selectize>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery/plugins/selectize/vendor/dist/js/standalone/selectize.js"></script>
+    <script type="text/javascript">
+        angular.module('authorPlugin', [])
+            .directive('selectize', function() {
+                    return function($scope, element) {
+                        $.ajax({
+                            url: '/authorsOptions.json',
+                            contentType: "application/json",
+                            dataType: 'json',
+                            type: 'get',
+                            success:  function(data) {
+                                $('selectize').selectize({
+                                    maxItems: null,
+                                    valueField: 'id',
+                                    labelField: 'title',
+                                    searchField: 'title',
+                                    options: data.authors,
+                                    create: false
+                                });
+                            }
+                        });
+                    }
+            });
+     </script>
+</body>
+</html>

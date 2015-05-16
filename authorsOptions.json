@@ -1,0 +1,7 @@
+{
+    "authors": [
+       {"id": 1, "title": "Spectrometer", "url": "http://en.wikipedia.org/wiki/Spectrometers"},
+       {"id": 2, "title": "Spectrometer2", "url": "http://en.wikipedia.org/wiki/Spectrometers"},
+       {"id": 3, "title": "Spectrometer3", "url": "http://en.wikipedia.org/wiki/Spectrometers"}
+    ]
+}
