@@ -29,7 +29,7 @@
             .directive('selectize', function() {
                     return function($scope, element) {
                         $.ajax({
-                            url: '/authorsOptions.json',
+                            url: 'authorsOptions.json',
                             contentType: "application/json",
                             dataType: 'json',
                             type: 'get',
